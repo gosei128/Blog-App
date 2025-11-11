@@ -1,0 +1,16 @@
+{
+  "posts": [
+    {
+      "id": "4",
+      "title": "Day in a life of a Chef",
+      "body": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam, ut?",
+      "author": "Mario"
+    },
+    {
+      "id": "3b24",
+      "title": "100 days in prison",
+      "body": "Napaka hirap jusko",
+      "author": "Josh Yao"
+    }
+  ]
+}
