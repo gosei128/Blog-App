@@ -1,31 +1,26 @@
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from "react";
 
- const useFetch = (url) =>{
-   const [data, setData] = useState(null)
-   const [error, setError] = useState(null)
-   const [loading, setLoading] = useState(true)
+const useFetch = (url) => {
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-   useEffect(()=>{
-       setLoading(true)
-       setError(null)
-       fetch(url)
-           .then(res => {
-               if(!res.ok){
-                   throw new Error(`Request failed with ${res.status}`)
-               }
-               return res.json()
-           })
-           .then(data => {
-               setData(data)
-           })
-           .catch(err => {
-               setError(err)
-           })
-           .finally(() => {
-               setLoading(false)
-           })
-   }, [url])
-   return {data, error, loading}
-}
+  useEffect(() => {
+    setLoading(true);
+    setError(null);
+    const fetchBlog = async (link) => {
+      const response = await fetch(link);
+      const json = await response.json();
 
-export default useFetch
+      if (response.ok) {
+        setLoading(false);
+        setData(json);
+      }
+    };
+    fetchBlog(url);
+  }, [url]);
+  console.log(data);
+  return { data, error, loading };
+};
+
+export default useFetch;
