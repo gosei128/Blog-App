@@ -1,6 +1,6 @@
 # Blog App
 
-A lightweight blog front end built with React and Vite. It lets you browse blog posts, view individual details, create new entries, and delete existing ones. Data is served by a simple `json-server` API so you can prototype quickly without standing up a full backend.
+A lightweight blog application built with React and Vite. The project now includes a small Express.js backend using MongoDB and Mongoose for persistence (previously the UI used `json-server` for prototyping).
 
 ## Features
 
@@ -10,32 +10,59 @@ A lightweight blog front end built with React and Vite. It lets you browse blog 
 - Delete an existing post from the detail view.
 - Shared `useFetch` hook for reusable data fetching logic.
 
+Backend (new)
+
+- Small Express.js API implemented in the `backend/` folder using `mongoose` to interact with MongoDB.
+- Routes are mounted under `/api/blogs` (see [backend/routes/blogRoutes.js](backend/routes/blogRoutes.js)).
+
 ## Requirements
 
 - Node.js ≥ 18
 - npm (comes with Node)
-- `json-server` (install globally with `npm install -g json-server`, or run via `npx`)
+- MongoDB (local or remote) if you use the included Express backend
 
 ## Getting Started
 
-1. Install dependencies:
+There are two common ways to run the app locally:
+
+1. Quick prototype (json-server)
+
+   If you want the old mock API, start `json-server` (no Mongo required):
+
    ```bash
    npm install
-   ```
-2. Start the local API (from the project root):
-   ```bash
    npx json-server --watch data/db.json --port 8000
-   ```
-   The server exposes endpoints such as:
-   - `GET http://localhost:8000/posts`
-   - `GET http://localhost:8000/posts/:id`
-   - `POST http://localhost:8000/posts`
-   - `DELETE http://localhost:8000/posts/:id`
-3. Run the Vite dev server in a separate terminal:
-   ```bash
    npm run dev
    ```
-4. Open the app in your browser (default): `http://localhost:5173/`.
+
+   - Frontend fetch URL used previously: `http://localhost:8000/posts`
+
+2. Full backend (Express + MongoDB) — recommended
+
+   - Create a `.env` file in the project root with at least:
+
+     ```env
+     PORT=3000
+     MONGO_URI=mongodb://localhost:27017/blogAppDB
+     ```
+
+   - Install and start the backend (from the `backend/` folder):
+
+     ```powershell
+     cd backend
+     npm install
+     npm install cors
+     npm run dev   # or: node server.js
+     ```
+
+   - Start the frontend in a separate terminal (from project root):
+
+     ```bash
+     npm install
+     npm run dev
+     ```
+
+   - The frontend should request the API at `http://localhost:3000/api/blogs` by default. Update `src/hook/useFetch.jsx` if you use a different port.
 
 ## Available Scripts
 
@@ -43,6 +70,10 @@ A lightweight blog front end built with React and Vite. It lets you browse blog 
 - `npm run build` – create a production build.
 - `npm run preview` – serve the production build locally.
 - `npm run lint` – run ESLint across the project.
+
+Backend scripts
+
+- From `backend/`: `npm run dev` or `node server.js` (depends on `package.json` in `backend/`).
 
 ## Project Structure
 
@@ -57,6 +88,14 @@ src/
   Navbar.jsx         // Top navigation bar
 data/
   db.json            // json-server database
+backend/
+   server.js          // Express app entry
+   routes/
+      blogRoutes.js    // API routes mounted at /api/blogs
+   controller/
+      blogController.js
+   data/
+      db.js            // mongoose connection helper
 ```
 
 ## Tailwind & Styling
@@ -66,8 +105,13 @@ Tailwind CSS is configured via the Vite plugin (`@tailwindcss/vite`). Components
 ## Notes
 
 - Ensure `json-server` stays in sync with `data/db.json`. Restart it if you edit the file.
-- When adding new API fields, update the form in `Create.jsx` and any rendering logic accordingly.
-- For production, replace `json-server` with a real backend and adjust the API base URL.
+- If you use the Express backend and your frontend runs on a different origin (for example `http://localhost:5173`), enable CORS in the backend by installing `cors` and adding `app.use(cors())` in [backend/server.js](backend/server.js).
+- The current backend mounts blog routes under `/api/blogs`. Example endpoints:
+  - `GET http://localhost:3000/api/blogs` — list posts
+  - `GET http://localhost:3000/api/blogs/:id` — get a single post
+  - `POST http://localhost:3000/api/blogs` — create a post
+  - `DELETE http://localhost:3000/api/blogs/:id` — delete a post
+- When switching from `json-server` to the Express backend, update `src/hook/useFetch.jsx` to point to the new API base URL.
 
 ## License
 
