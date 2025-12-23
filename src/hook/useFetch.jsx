@@ -19,7 +19,7 @@ const useFetch = (url) => {
     };
     fetchBlog(url);
   }, [url]);
-  console.log(data);
+
   return { data, error, loading };
 };
 

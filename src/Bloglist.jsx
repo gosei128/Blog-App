@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
+import SearchInput from "./component/search";
 const Bloglist = ({ list, title }) => {
   return (
     <section className="w-full flex justify-center ">
       <div className=" mt-10  w-5xl px-3">
         <h1 className="text-2xl font-bold">{title}</h1>
+
         <hr />
+        <SearchInput />
         {
           // Card Detail of blogs
           list.map((blog) => (

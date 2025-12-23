@@ -4,6 +4,7 @@ import Home from "./Home";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Blogdetails from "./Blogdetails";
 import Create from "./Create";
+import SearchResults from "./SearchResults";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route exact path="/" element={<Home />}></Route>
           <Route path="/api/blogs/:id" element={<Blogdetails />}></Route>
           <Route path="/create" element={<Create />}></Route>
+          <Route path="/search" element={<SearchResults />}></Route>
         </Routes>
       </div>
     </Router>
