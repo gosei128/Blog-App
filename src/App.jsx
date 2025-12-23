@@ -1,5 +1,5 @@
-import "./App.css";
 import Navbar from "./Navbar";
+import "./index.css";
 import Home from "./Home";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Blogdetails from "./Blogdetails";
@@ -9,9 +9,8 @@ function App() {
   return (
     <Router>
       <div className="">
-        <div className="border rounded-lg shadow-xs border-gray-200 w-3xl">
-          <Navbar />
-        </div>
+        <Navbar />
+
         <Routes>
           <Route exact path="/" element={<Home />}></Route>
           <Route path="/api/blogs/:id" element={<Blogdetails />}></Route>

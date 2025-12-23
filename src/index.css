@@ -1,4 +1,11 @@
 @import "tailwindcss";
+
 body {
     font-family: 'Sora Variable', sans-serif;
+  }
+
+  @theme{
+    --breakpoint-mobile: 375px;
+    --breakpoint-lg: 425px;
+    --breakpoint-tablet: 768px;
   }

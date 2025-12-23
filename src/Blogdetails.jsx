@@ -18,7 +18,7 @@ const Blogdetails = () => {
     );
   };
   return (
-    <div className="mt-14 w-3xl ">
+    <div className="mt-14">
       {loading && <p>Loading blog...</p>}
       {error && <p className="text-red-600">Error: {error.message}</p>}
       {!loading && !error && !blog && <p>Blog not found.</p>}
