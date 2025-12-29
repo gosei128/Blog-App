@@ -1,5 +1,6 @@
 const Blog = require("../models/UserSchema.js");
 const mongoose = require("mongoose");
+
 const blog_home = async (req, res) => {
   const blogs = await Blog.find({}).sort({ createdAt: -1 });
   res.status(200).json(blogs);
@@ -23,12 +24,25 @@ const blog_details = async (req, res) => {
 
 const blog_create_post = async (req, res) => {
   const { title, body, author } = req.body;
+  if (!req.file) {
+    return res.status(400).json({ error: "Image file required" });
+  }
   try {
-    const blogs = await Blog.create({ title, body, author });
+    // const imageUrl = `${req.protocol}://${req.get("host")}/uploads/${
+    //   req.file.filename
+    // }`;
+
+    const blogs = await Blog.create({
+      title,
+      body,
+      author,
+      image: req.file.filename,
+    });
 
     res.status(200).json(blogs);
   } catch (e) {
     console.log(e.message);
+    res.status(400).json({ error: e.message });
   }
 };
 
@@ -51,7 +65,9 @@ const blog_delete = async (req, res) => {
 const blog_title = async (req, res) => {
   const { title } = req.params;
   // Use regex for case-insensitive partial match
-  const blogTitle = await Blog.find({ title: { $regex: title, $options: "i" } }).sort({ createdAt: -1 });
+  const blogTitle = await Blog.find({
+    title: { $regex: title, $options: "i" },
+  }).sort({ createdAt: -1 });
 
   if (!blogTitle || blogTitle.length === 0) {
     return res.status(404).json({ error: "No such Blog" });

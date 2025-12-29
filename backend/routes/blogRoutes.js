@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const upload = require("../middleware/upload.js");
 const {
   blog_home,
   blog_details,
@@ -9,12 +10,11 @@ const {
 } = require("../controller/blogController");
 
 router.get("/", blog_home);
+router.get("/title/:title", blog_title);
 
 router.get("/:id", blog_details);
 
-router.get("/title/:title", blog_title);
-
-router.post("/", blog_create_post);
+router.post("/", upload.single("image"), blog_create_post);
 
 router.delete("/:id", blog_delete);
 module.exports = router;
