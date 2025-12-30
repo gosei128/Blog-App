@@ -1,4 +1,4 @@
-const Blog = require("../models/UserSchema.js");
+const Blog = require("../models/blogSchema.js");
 const mongoose = require("mongoose");
 
 const blog_home = async (req, res) => {
