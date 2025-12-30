@@ -60,8 +60,8 @@ const Signup = () => {
           className="border rounded-md p-1"
           placeholder="Confirm password"
           type="password"
-          id="password"
-          name="password"
+          id="confirm-pass"
+          name="confirm-pass"
           required
           onChange={(e) => setConfirmPassword(e.target.value)}
         />

@@ -1,9 +1,18 @@
 const Blog = require("../models/blogSchema.js");
 const mongoose = require("mongoose");
+const jwt = require("jsonwebtoken");
 
 const blog_home = async (req, res) => {
-  const blogs = await Blog.find({}).sort({ createdAt: -1 });
-  res.status(200).json(blogs);
+  try {
+    const blogs = await Blog.find({}).sort({ createdAt: -1 });
+    res.status(200).json({
+      user: res.locals.user,
+      blogs,
+    });
+  } catch (e) {
+    console.log(e.message);
+    res.status(500).json({ error: e.message });
+  }
 };
 
 const blog_details = async (req, res) => {
@@ -24,6 +33,7 @@ const blog_details = async (req, res) => {
 
 const blog_create_post = async (req, res) => {
   const { title, body, author } = req.body;
+
   if (!req.file) {
     return res.status(400).json({ error: "Image file required" });
   }

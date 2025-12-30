@@ -20,8 +20,15 @@ const Create = () => {
 
     fetch("http://localhost:3000/api/blogs/", {
       method: "POST",
+      credentials: "include",
       body: formData,
-    }).then(() => {
+    }).then(async (res) => {
+      if (res.status === 401) {
+        alert("You must be logged in to create a post");
+        navigate("/login");
+        setPending(false);
+        return;
+      }
       setTimeout(() => {
         alert("new blog added");
         setPending(false);

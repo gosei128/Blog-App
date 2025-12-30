@@ -9,13 +9,15 @@ const useFetch = (url) => {
     setLoading(true);
     setError(null);
     const fetchBlog = async (link) => {
-      const response = await fetch(link);
+      const response = await fetch(link, { credentials: "include" });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
       const json = await response.json();
 
-      if (response.ok) {
-        setLoading(false);
-        setData(json);
-      }
+      setLoading(false);
+      setData(json);
     };
     fetchBlog(url);
   }, [url]);

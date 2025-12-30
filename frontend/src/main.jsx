@@ -4,9 +4,12 @@ import "./index.css";
 import App from "./App.jsx";
 // Supports weights 100-800
 import "@fontsource-variable/sora";
+import { AuthProvider } from "./context/autContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <App />
+    <AuthProvider>
+      <App />
+    </AuthProvider>
   </StrictMode>
 );
