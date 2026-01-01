@@ -12,10 +12,23 @@ const Navbar = () => {
   const { user, setUser, loading } = useAuth();
   const navigate = useNavigate();
 
+  const handleLogout = async () => {
+    const res = await fetch("http://localhost:3000/api/user/logout", {
+      method: "POST",
+      credentials: "include",
+    });
+    if (res.ok) {
+      setTimeout(() => {
+        setUser(null);
+        navigate("/");
+      }, 1000);
+    }
+  };
+
   return (
     <>
       <div
-        className={`absolute h-60 w-full border drop-shadow-2xl bg-white transition-all duration-200 rounded-b-xl p-3 ${
+        className={`absolute h-60 w-full border drop-shadow-2xl bg-white transition-all duration-400 rounded-b-xl p-3 ${
           dropDown ? "translate-y-0" : "-translate-y-100"
         }`}
       >
@@ -58,12 +71,27 @@ const Navbar = () => {
             onClick={() => setDropdown(!dropDown)}
           />
           {user ? (
-            <span>Hello, {user.email}</span>
+            <div className="mobile:hidden lg:block">
+              <span className="mr-5">Hello, {user.email}</span>
+              <button
+                onClick={handleLogout}
+                className=" border p-1 px-3 rounded-md bg-black text-white"
+              >
+                Logout
+              </button>
+            </div>
           ) : (
-            <>
-              <Link to="/login">Login</Link>
-              <Link to="/signup">Sign up</Link>
-            </>
+            <div className="mobile:hidden lg:block">
+              <Link
+                to="/login"
+                className="p-1 px-4 rounded-md mr-3 bg-black text-white"
+              >
+                Login
+              </Link>
+              <Link to="/signup" className=" border p-1 px-3 rounded-md">
+                Sign up
+              </Link>
+            </div>
           )}
         </div>
       </nav>

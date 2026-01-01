@@ -5,7 +5,7 @@ const Home = () => {
   const { data, loading, error } = useFetch("http://localhost:3000/api/blogs");
 
   return (
-    <div>
+    <div className=" w-screen ">
       <Hero />
       {loading && <p>Loading blogs...</p>}
       {error && <p className="text-red-600">Error: {error.message}</p>}

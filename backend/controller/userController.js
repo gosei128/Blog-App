@@ -26,7 +26,7 @@ const get_current_user = async (req, res) => {
 
 const logout_post = (req, res) => {
   res.cookie("jwt", "", { maxAge: 1 });
-  res.redirect("/");
+  res.json({ logout: "logout complete" });
 };
 
 const login_post = async (req, res) => {

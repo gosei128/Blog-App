@@ -25,8 +25,8 @@ app.use(cookieParser());
 //   next();
 // });
 
-app.use("/api/user", userRoute);
 app.use("/api/blogs", blogRouter);
+app.use("/api/user", userRoute);
 
 //listener
 connectDB()

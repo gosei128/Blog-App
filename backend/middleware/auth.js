@@ -25,7 +25,7 @@ const checkUser = async (req, res, next) => {
 
   if (!token) {
     req.user = null;
-    next();
+    return next();
   }
 
   try {
@@ -33,10 +33,10 @@ const checkUser = async (req, res, next) => {
     const user = await User.findById(decoded._id).select("-password");
 
     req.user = user;
-    next();
+    return next();
   } catch (err) {
     req.user = null;
-    next();
+    return next();
   }
   //   const token = req.cookies.jwt;
   //   if (token) {
