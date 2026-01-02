@@ -34,6 +34,10 @@ const blog_details = async (req, res) => {
 const blog_create_post = async (req, res) => {
   const { title, body, author } = req.body;
 
+  // if (!title || !body || !author || !image) {
+  //   return res.status(400).json({ error: "All fields required" });
+  // }
+
   if (!req.file) {
     return res.status(400).json({ error: "Image file required" });
   }

@@ -54,8 +54,8 @@ const Navbar = () => {
           </ul>
         </div>
       </div>
-      <nav className="w-full  flex justify-center ">
-        <div className="flex items-center w-5xl p-4 border rounded-b-xl border-gray-100 shadow-lg justify-between">
+      <nav className="w-full fixed bg-white flex justify-center ">
+        <div className="flex items-center w-5xl p-4 border rounded-b-xl border-gray-100 shadow-md justify-between">
           <h1
             className="cursor-pointer font-medium"
             onClick={() => {
@@ -88,7 +88,10 @@ const Navbar = () => {
               >
                 Login
               </Link>
-              <Link to="/signup" className=" border p-1 px-3 rounded-md">
+              <Link
+                to="/signup"
+                className=" border border-gray-400 p-1 px-3 rounded-md"
+              >
                 Sign up
               </Link>
             </div>

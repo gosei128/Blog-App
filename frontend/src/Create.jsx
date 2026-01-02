@@ -1,19 +1,21 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "./context/autContext";
 const Create = () => {
+  const { user } = useAuth();
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
-  const [author, setAuthor] = useState("");
   const [pending, setPending] = useState(false);
   const [image, setImage] = useState(null);
   const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const formData = new FormData();
     formData.append("title", title);
     formData.append("body", body);
-    formData.append("author", author);
+    formData.append("author", user.email);
     formData.append("image", image);
 
     setPending(true);
@@ -54,17 +56,7 @@ const Create = () => {
               }}
               placeholder="Enter title of blog"
             />
-            <input
-              type="text"
-              value={author}
-              required
-              name="author"
-              className="border max-w-96 w-full rounded-md border-gray-300 p-2"
-              placeholder="Enter authors name"
-              onChange={(e) => {
-                setAuthor(e.target.value);
-              }}
-            />
+
             <input
               type="file"
               name="image"

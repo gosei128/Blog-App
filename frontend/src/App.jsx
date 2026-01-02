@@ -11,7 +11,7 @@ import Signup from "./component/signup";
 function App() {
   return (
     <Router>
-      <div className="">
+      <div className="relative">
         <Navbar />
 
         <Routes>
