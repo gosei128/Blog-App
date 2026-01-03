@@ -8,12 +8,12 @@ const Bloglist = ({ list, title }) => {
           <h1 className="text-2xl font-bold">{title}</h1>
           <hr />
         </div>
-        <div className=" mt-5 flex flex-wrap justify-center tablet:justify-start gap-4">
+        <div className=" mt-5 flex flex-wrap justify-center tablet:justify-start gap-1">
           {
             // Card Detail of blogs
             list.map((blog) => (
               <div
-                className="border-gray-200 border h-86 p-3 rounded-xl"
+                className="border-gray-200 border h-86 w-full max-w-84 p-3 rounded-xl"
                 key={blog._id}
               >
                 <Link to={`/api/blogs/${blog._id}`}>
