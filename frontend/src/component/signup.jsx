@@ -28,9 +28,9 @@ const Signup = () => {
     }
   };
   return (
-    <div className="p-2">
+    <div className="p-2 pt-15 w-full flex justify-center">
       <form
-        className="flex flex-col p-3 gap-2 border mt-10 rounded-lg"
+        className="flex flex-col w-full max-w-lg p-3 gap-2 border mt-10 rounded-lg"
         onSubmit={handleSubmit}
       >
         <h1>Sign up</h1>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -26,12 +27,12 @@ const Login = () => {
     }
   };
   return (
-    <div className="p-2">
+    <div className="p-2 pt-15 w-full flex justify-center">
       <form
-        className="flex flex-col p-3 gap-2 border mt-10 rounded-lg"
+        className="flex flex-col w-full max-w-lg p-3 gap-2 border mt-10 rounded-lg"
         onSubmit={handleSubmit}
       >
-        <h1>Login</h1>
+        <h1 className="text-3xl font-bold">Login</h1>
         <label for="email">Email:</label>
         <input
           className="border rounded-md p-1"
@@ -53,9 +54,18 @@ const Login = () => {
           required
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit" className="border p-2 rounded-lg">
+        <button
+          type="submit"
+          className="border p-2 rounded-lg bg-black text-white"
+        >
           Login
         </button>
+        <p className="self-center text-gray-400">
+          Don't have account yet?{" "}
+          <Link to="/signup" className="underline text-black">
+            Sign up
+          </Link>{" "}
+        </p>
       </form>
     </div>
   );

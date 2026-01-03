@@ -40,10 +40,10 @@ const Create = () => {
   };
 
   return (
-    <section className="w-full flex mt-5  justify-center ">
-      <div className="w-5xl border rounded-lg shadow-lg border-gray-200 p-5">
+    <section className="w-full flex py-20 px-2 justify-center ">
+      <div className="w-full max-w-5xl border rounded-lg shadow-lg border-gray-200 p-5">
         <h1 className="text-2xl">Create your blog</h1>
-        <form className="mt-5" onSubmit={handleSubmit}>
+        <form className="" onSubmit={handleSubmit}>
           <div className="flex mobile:flex-col gap-2 tablet:flex-row">
             <input
               type="text"
@@ -58,6 +58,7 @@ const Create = () => {
             />
 
             <input
+              className="border border-gray-300 p-2 rounded-lg"
               type="file"
               name="image"
               accept="image/*"

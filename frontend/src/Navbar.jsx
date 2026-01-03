@@ -28,7 +28,7 @@ const Navbar = () => {
   return (
     <>
       <div
-        className={`absolute h-60 w-full border drop-shadow-2xl bg-white transition-all duration-400 rounded-b-xl p-3 ${
+        className={`absolute h-60 w-full border drop-shadow-2xl bg-white transition-all duration-400 rounded-b-xl z-10 p-3 ${
           dropDown ? "translate-y-0" : "-translate-y-100"
         }`}
       >
