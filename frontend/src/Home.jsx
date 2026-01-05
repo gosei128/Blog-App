@@ -2,7 +2,8 @@ import useFetch from "./hook/useFetch";
 import Bloglist from "./Bloglist";
 import Hero from "./Hero";
 const Home = () => {
-  const { data, loading, error } = useFetch("http://localhost:3000/api/blogs");
+  const API_URL = import.meta.env.VITE_API_URI;
+  const { data, loading, error } = useFetch(`${API_URL}/api/blogs`);
 
   return (
     <div className=" w-screen h-fit ">
