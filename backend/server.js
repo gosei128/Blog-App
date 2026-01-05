@@ -11,7 +11,12 @@ const app = express();
 // Allow requests from the frontend and allow cookies to be sent
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: [
+      "http://localhost:3000", // for local development
+      "http://localhost:5173", // for Vite local dev
+      "https://blog-app-git-master-ronis-projects-0f22d049.vercel.app/", // your Vercel URL
+      "https://*.vercel.app",
+    ],
     credentials: true,
   })
 );
