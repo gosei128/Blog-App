@@ -2,8 +2,9 @@ import useFetch from "./hook/useFetch";
 import Bloglist from "./Bloglist";
 import Hero from "./Hero";
 const Home = () => {
-  const API_URL = import.meta.env.VITE_API_URL;
-  const { data, loading, error } = useFetch(`${API_URL}/api/blogs`);
+  const { data, loading, error } = useFetch(
+    "https://blog-app-inlb.onrender.com/api/blogs"
+  );
 
   return (
     <div className=" w-screen h-fit ">
