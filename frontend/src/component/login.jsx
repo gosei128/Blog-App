@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -10,20 +11,20 @@ const Login = () => {
         "https://blog-app-inlb.onrender.com/api/user/login",
         {
           method: "POST",
+          headers: { "Content-Type": "application/json" },
           credentials: "include",
           body: JSON.stringify({ email, password }),
-          headers: { "Content-Type": "application/json" },
         }
       );
       const data = await res.json();
       console.log(data);
 
-      if (data.email || data.password) {
-        setEmail(data.email);
-        setPassword(data.password);
-      }
+      // if (data.email || data.password) {
+      //   setEmail(data.email);
+      //   setPassword(data.password);
+      // }
       if (data.user) {
-        location.assign("/");
+        navigate("/");
       }
     } catch (err) {
       console.log(err);
