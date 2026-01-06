@@ -7,15 +7,15 @@ const Blogdetails = () => {
     data: blog,
     error,
     loading,
-  } = useFetch("http://localhost:3000/api/blogs/" + id);
+  } = useFetch("https://blog-app-inlb.onrender.com/api/blogs/" + id);
   const navigate = useNavigate();
 
   const handleDelete = () => {
-    fetch("http://localhost:3000/api/blogs/" + id, { method: "DELETE" }).then(
-      () => {
-        navigate("/");
-      }
-    );
+    fetch("https://blog-app-inlb.onrender.com/api/blogs/" + id, {
+      method: "DELETE",
+    }).then(() => {
+      navigate("/");
+    });
   };
   return (
     <section className="pt-25 px-2 w-full h-screen flex flex-col items-center border ">
