@@ -3,9 +3,7 @@ import Bloglist from "./Bloglist";
 import Hero from "./Hero";
 const Home = () => {
   const API_URL = import.meta.env.VITE_API_URL;
-  const { data, loading, error, visibleBlogs } = useFetch(
-    "http://localhost:3000/api/blogs/"
-  );
+  const { data, loading, error } = useFetch(`${API_URL}/api/blogs`);
 
   return (
     <div className=" w-screen h-fit ">
