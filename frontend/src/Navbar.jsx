@@ -24,7 +24,7 @@ const Navbar = () => {
       setTimeout(() => {
         setUser(null);
         navigate("/");
-      }, 1000);
+      }, 500);
     }
   };
 

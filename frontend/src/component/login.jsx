@@ -6,12 +6,15 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:3000/api/user/login", {
-        method: "POST",
-        credentials: "include",
-        body: JSON.stringify({ email, password }),
-        headers: { "Content-Type": "application/json" },
-      });
+      const res = await fetch(
+        "https://blog-app-inlb.onrender.com/api/user/login",
+        {
+          method: "POST",
+          credentials: "include",
+          body: JSON.stringify({ email, password }),
+          headers: { "Content-Type": "application/json" },
+        }
+      );
       const data = await res.json();
       console.log(data);
 
