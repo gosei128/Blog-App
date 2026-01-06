@@ -12,10 +12,9 @@ const app = express();
 app.use(
   cors({
     origin: [
-      // "http://localhost:3000", // for local development
-      // "http://localhost:5173", // for Vite local dev
-      "https://blog-app-git-master-ronis-projects-0f22d049.vercel.app/", // your Vercel URL
-      "https://*.vercel.app",
+      "http://localhost:3000", // for local development
+      "http://localhost:5173", // for Vite local dev
+      "https://blog-app-git-master-ronis-projects-0f22d049.vercel.app", // your Vercel URL
     ],
     credentials: true,
   })

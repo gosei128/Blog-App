@@ -7,9 +7,7 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://blog-app-inlb.onrender.com/api/user", {
-      credentials: "include",
-    })
+    fetch("http://localhost:3000/api/user", { credentials: "include" })
       .then((res) => res.json())
       .then((data) => {
         setUser(data.user);

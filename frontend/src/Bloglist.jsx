@@ -23,7 +23,7 @@ const Bloglist = ({ list, title }) => {
                 </Link>
                 {blog.image && (
                   <img
-                    src={`https://blog-app-inlb.onrender.com/uploads/${blog.image}`}
+                    src={`http://localhost:3000/uploads/${blog.image}`}
                     alt={blog.title || "Blog image"}
                     className="w-full h-55 rounded"
                   />
