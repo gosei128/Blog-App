@@ -15,12 +15,15 @@ const Signup = () => {
     }
 
     try {
-      const res = await fetch("http://localhost:3000/api/user/signup", {
-        method: "POST",
-        credentials: "include",
-        body: JSON.stringify({ email, password }),
-        headers: { "Content-Type": "application/json" },
-      });
+      const res = await fetch(
+        "https://blog-app-inlb.onrender.com/api/user/signup",
+        {
+          method: "POST",
+          credentials: "include",
+          body: JSON.stringify({ email, password }),
+          headers: { "Content-Type": "application/json" },
+        }
+      );
       const data = await res.json();
       console.log(data);
     } catch (err) {

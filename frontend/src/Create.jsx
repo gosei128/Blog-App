@@ -20,7 +20,7 @@ const Create = () => {
 
     setPending(true);
 
-    fetch("http://localhost:3000/api/blogs/", {
+    fetch("https://blog-app-inlb.onrender.com//api/blogs/", {
       method: "POST",
       credentials: "include",
       body: formData,

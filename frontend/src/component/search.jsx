@@ -5,7 +5,9 @@ import { IoSearchSharp } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 
 const SearchInput = () => {
-  const { data, error, loading } = useFetch("http://localhost:3000/api/blogs");
+  const { data, error, loading } = useFetch(
+    "https://blog-app-inlb.onrender.com/api/blogs"
+  );
   const [titles, setTitles] = useState([]);
   const [searchParams, setSearchParams] = useState("");
   const [filteredTitle, setFilter] = useState([]);

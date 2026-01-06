@@ -13,10 +13,13 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const handleLogout = async () => {
-    const res = await fetch("http://localhost:3000/api/user/logout", {
-      method: "POST",
-      credentials: "include",
-    });
+    const res = await fetch(
+      "https://blog-app-inlb.onrender.com/api/user/logout",
+      {
+        method: "POST",
+        credentials: "include",
+      }
+    );
     if (res.ok) {
       setTimeout(() => {
         setUser(null);

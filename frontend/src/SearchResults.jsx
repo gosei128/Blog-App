@@ -12,7 +12,9 @@ const SearchResults = () => {
     error,
   } = useFetch(
     title
-      ? `http://localhost:3000/api/blogs/title/${encodeURIComponent(title)}`
+      ? `https://blog-app-inlb.onrender.com/api/blogs/title/${encodeURIComponent(
+          title
+        )}`
       : ""
   );
 

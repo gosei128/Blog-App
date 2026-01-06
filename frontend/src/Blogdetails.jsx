@@ -26,7 +26,7 @@ const Blogdetails = () => {
         {blog && (
           <article className="grid grid-cols-1 tablet:grid-cols-[2fr_1fr] gap-3  border-gray-200  p-3 rounded-2xl shadow-lg h-fit max-h-screen ">
             <img
-              src={`http://localhost:3000/uploads/${blog.image}`}
+              src={`https://blog-app-inlb.onrender.com/uploads/${blog.image}`}
               className="w-full max-w-2xl h-fit"
               alt=""
             />
